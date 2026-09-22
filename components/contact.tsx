@@ -14,13 +14,13 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+93 700 495 5576",
-    href: "tel:+937004955576",
+    value: "+90 552 584 3148",
+    href: "tel:+90 552 584 3148",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Kabul, Afghanistan",
+    value: "Istanbul, Turkey",
     href: null,
   },
   {
