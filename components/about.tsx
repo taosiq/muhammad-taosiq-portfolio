@@ -79,11 +79,12 @@ export function About() {
           </p>
 
           <p className="text-pretty">
-            Currently seeking{" "}
-            <span className="text-primary font-medium">Master&apos;s program opportunities abroad</span>{" "}
-            (Erasmus+, fully funded programs), along with internships, remote positions, 
-            or international collaborations where I can contribute and grow.
-          </p>
+            Currently pursuing my{" "}
+            <span className="text-primary font-medium">Master&apos;s in Industrial Engineering at Istanbul Beykent University</span>
+            , while actively seeking{" "}
+            <span className="text-primary font-medium">software development internships and part-time roles in Istanbul</span>
+            {" "}— open to Android, full-stack, and AI-driven projects where I can contribute from day one and grow into a full-time role.
+          </p>       
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
