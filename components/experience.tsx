@@ -5,24 +5,26 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const experiences = [
   {
-    period: "May 2025",
-    title: "Freelance Web Developer",
-    company: "Shams Rims (USA)",
+    period: "Jul 2025 - Nov 2025",
+    title: "Junior Android Software Developer",
+    company: "Blue Brackets",
     companyUrl: null,
-    location: "Remote",
+    location: "Islamabad, Pakistan",
     description: [
-      "Delivered a fully responsive business website as the sole Front-End Developer using React.js, Bootstrap, and custom CSS.",
-      "Implemented multi-page layout with React Router and a dynamic product catalog with interactive filtering.",
-      "Managed client communications across time zones and delivered milestones on schedule.",
+      "Developed and maintained Android mobile applications.",
+      "Integrated RESTful APIs and backend services.",
+      "Troubleshot, debugged, and optimized software performance.",
+      "Collaborated with cross-functional teams on software development projects.",
+      "Assisted in database management and backend development tasks.",
     ],
-    technologies: ["React.js", "Bootstrap", "CSS3", "JavaScript", "React Router"],
+    technologies: ["Java", "Android Studio", "REST APIs", "Git"],
   },
   {
     period: "Dec 2023 - Feb 2024",
     title: "Android Application Development Intern",
     company: "Blue Brackets",
     companyUrl: null,
-    location: "Kabul, Afghanistan",
+    location: "Islamabad, Pakistan",
     description: [
       "Developed Android applications using Java and Android Studio, gaining hands-on mobile development experience.",
       "Worked in agile team environment, improving problem-solving and communication skills.",
