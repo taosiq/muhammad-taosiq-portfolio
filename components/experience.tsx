@@ -1,4 +1,3 @@
-```tsx
 "use client"
 
 import { ExternalLink, Briefcase } from "lucide-react"
@@ -55,22 +54,9 @@ export function Experience() {
             Experience
           </h2>
 
-          <p className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-balance">
+          <p className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-balance">
             Professional Journey
           </p>
-
-          {/* AI Trade Journal Live Project */}
-          <div className="mb-8">
-            <a
-              href="https://ai-trade-journal-imsi7elnk-mtaosiqbscs21seecs-1571s-projects.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all"
-            >
-              <span>AI Trade Journal — Live Web App</span>
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </div>
         </div>
 
         <div className="relative">
@@ -83,7 +69,9 @@ export function Experience() {
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
                 }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                style={{
+                  transitionDelay: `${index * 150}ms`,
+                }}
               >
                 <div className="flex flex-col md:flex-row gap-4 md:gap-8">
                   <div className="text-sm text-muted-foreground shrink-0 md:w-44 md:text-right">
@@ -139,6 +127,7 @@ export function Experience() {
                             <span className="text-primary mt-0.5 shrink-0">
                               •
                             </span>
+
                             <span>{item}</span>
                           </li>
                         ))}
@@ -165,4 +154,3 @@ export function Experience() {
     </section>
   )
 }
-```
