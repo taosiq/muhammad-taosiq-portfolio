@@ -28,7 +28,6 @@ const highlights = [
   {
     icon: Target,
     title: "Opportunities",
-    value: "Part-Time / Internship",
     detail: "Istanbul, Turkey",
     extra: "Open to Technology Roles",
   },
