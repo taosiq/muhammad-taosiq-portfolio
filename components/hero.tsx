@@ -86,7 +86,7 @@ export function Hero() {
               </span>
               , while seeking{" "}
               <span className="text-primary font-medium">
-                part-time opportunities
+                opportunities
               </span>{" "}
               in software development, IT, automation, and technology.
             </p>
