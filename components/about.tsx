@@ -97,7 +97,7 @@ export function About() {
             </span>
             , Istanbul, while actively seeking{" "}
             <span className="text-primary font-medium">
-              part-time roles, internships, and project-based opportunities
+              IT related roles, internships, and project-based opportunities
             </span>{" "}
             in software development, IT, automation, data, and
             technology-driven industrial environments. I am eager to apply my
