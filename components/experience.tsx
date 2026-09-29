@@ -1,3 +1,4 @@
+```tsx
 "use client"
 
 import { ExternalLink, Briefcase } from "lucide-react"
@@ -38,19 +39,38 @@ export function Experience() {
   const { ref, isVisible } = useScrollAnimation()
 
   return (
-    <section id="experience" className="py-12 px-6 md:px-12 lg:px-24 bg-card/30">
+    <section
+      id="experience"
+      className="py-12 px-6 md:px-12 lg:px-24 bg-card/30"
+    >
       <div ref={ref} className="max-w-5xl mx-auto">
         <div
           className={`transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
           }`}
         >
           <h2 className="text-sm font-medium text-primary uppercase tracking-wider mb-2">
             Experience
           </h2>
-          <p className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-balance">
+
+          <p className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-balance">
             Professional Journey
           </p>
+
+          {/* AI Trade Journal Live Project */}
+          <div className="mb-8">
+            <a
+              href="https://ai-trade-journal-imsi7elnk-mtaosiqbscs21seecs-1571s-projects.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all"
+            >
+              <span>AI Trade Journal — Live Web App</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </div>
         </div>
 
         <div className="relative">
@@ -69,58 +89,71 @@ export function Experience() {
                   <div className="text-sm text-muted-foreground shrink-0 md:w-44 md:text-right">
                     <p className="font-medium">{exp.period}</p>
                   </div>
+
                   <div className="relative flex-1">
                     {/* Timeline dot */}
                     <div className="absolute left-[-20px] top-1.5 w-3 h-3 bg-primary rounded-full hidden md:block" />
+
                     {/* Timeline line */}
                     <div className="absolute left-[-17px] top-5 bottom-[-40px] w-px bg-border hidden md:block" />
-                    <div className="p-6 bg-card rounded-xl border border-border hover:border-primary/50 transition-all group-hover:shadow-lg group-hover:shadow-primary/5">
-                    <div className="flex items-start gap-3 mb-4">
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                        <Briefcase className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-foreground flex items-center gap-2 flex-wrap">
-                          {exp.title}
-                        </h3>
-                        <p className="text-primary font-medium flex items-center gap-1">
-                          {exp.companyUrl ? (
-                            <a
-                              href={exp.companyUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:underline inline-flex items-center gap-1"
-                            >
-                              {exp.company}
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
-                          ) : (
-                            exp.company
-                          )}
-                        </p>
-                        <p className="text-sm text-muted-foreground">{exp.location}</p>
-                      </div>
-                    </div>
-                    
-                    <ul className="space-y-3 text-muted-foreground mb-4">
-                      {exp.description.map((item, i) => (
-                        <li key={i} className="text-sm leading-relaxed flex gap-3">
-                          <span className="text-primary mt-0.5 shrink-0">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
 
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                    <div className="p-6 bg-card rounded-xl border border-border hover:border-primary/50 transition-all group-hover:shadow-lg group-hover:shadow-primary/5">
+                      <div className="flex items-start gap-3 mb-4">
+                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                          <Briefcase className="w-5 h-5 text-primary" />
+                        </div>
+
+                        <div>
+                          <h3 className="text-lg font-semibold text-foreground flex items-center gap-2 flex-wrap">
+                            {exp.title}
+                          </h3>
+
+                          <p className="text-primary font-medium flex items-center gap-1">
+                            {exp.companyUrl ? (
+                              <a
+                                href={exp.companyUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:underline inline-flex items-center gap-1"
+                              >
+                                {exp.company}
+                                <ExternalLink className="w-3 h-3" />
+                              </a>
+                            ) : (
+                              exp.company
+                            )}
+                          </p>
+
+                          <p className="text-sm text-muted-foreground">
+                            {exp.location}
+                          </p>
+                        </div>
+                      </div>
+
+                      <ul className="space-y-3 text-muted-foreground mb-4">
+                        {exp.description.map((item, i) => (
+                          <li
+                            key={i}
+                            className="text-sm leading-relaxed flex gap-3"
+                          >
+                            <span className="text-primary mt-0.5 shrink-0">
+                              •
+                            </span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -132,3 +165,4 @@ export function Experience() {
     </section>
   )
 }
+```
