@@ -184,7 +184,7 @@ export const featuredProjects: FeaturedProject[] = [
       "REST APIs",
     ],
     github: "https://github.com/taosiq",
-    live: "https://ai-trade-journal-imsi7elnk-mtaosiqbscs21seecs-1571s-projects.vercel.app/",
+    live: "https://ai-trade-journal-omega.vercel.app/",
     context: "AI-Powered Full-Stack Web Application",
     date: "April 2026",
     highlight: false,
