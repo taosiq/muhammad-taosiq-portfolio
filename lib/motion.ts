@@ -5,8 +5,25 @@ export function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches
 }
 
-// How long the hero should wait so its intro starts as the boot screen fades.
-export function introDelay() {
-  if (typeof document === "undefined") return 0
-  return document.documentElement.dataset.booted ? 150 : 1750
+// Runs `cb` once the opening intro has finished (or right away if it was
+// skipped / already seen this session). Returns a cleanup function.
+export function whenIntroDone(cb: () => void) {
+  let called = false
+  const run = () => {
+    if (called) return
+    called = true
+    cb()
+  }
+  const introDone =
+    document.documentElement.dataset.booted || (window as unknown as { __introDone?: boolean }).__introDone
+  if (introDone) {
+    const t = setTimeout(run, 150)
+    return () => clearTimeout(t)
+  }
+  window.addEventListener("intro:done", run, { once: true })
+  const failsafe = setTimeout(run, 8000)
+  return () => {
+    window.removeEventListener("intro:done", run)
+    clearTimeout(failsafe)
+  }
 }

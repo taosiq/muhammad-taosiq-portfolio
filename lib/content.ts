@@ -30,7 +30,7 @@ export const profile = {
     "Automation Builder",
   ],
   photo:
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Profile-1i5BlovhXF3MMYWtthUJm0vG1K2Ffn.jpeg",
+    "/profile.jpg",
   email: "taosiqmuhammad@gmail.com",
   github: "https://github.com/taosiq",
   linkedin: "https://www.linkedin.com/in/mtaosiq",

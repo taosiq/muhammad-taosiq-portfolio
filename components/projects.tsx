@@ -46,7 +46,7 @@ function FeaturedCard({ project, wide }: { project: FeaturedProject; wide?: bool
           <Terminal className="h-3.5 w-3.5 shrink-0 text-primary" />
           <span className="truncate">~/projects/{project.slug}</span>
         </div>
-        <div className="flex shrink-0 items-center gap-2 font-mono text-[10px]">
+        <div className="flex shrink-0 items-center gap-2 font-mono text-xs">
           {project.highlight && (
             <span className="rounded border border-primary/40 bg-primary/10 px-2 py-0.5 tracking-widest text-primary">FEATURED</span>
           )}
@@ -65,11 +65,11 @@ function FeaturedCard({ project, wide }: { project: FeaturedProject; wide?: bool
           >
             {project.title}
           </h3>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">{project.description}</p>
           {project.bullets && (
             <ul className="mt-4 space-y-2.5">
               {project.bullets.map((b, i) => (
-                <li key={i} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                <li key={i} className="flex gap-3 text-base leading-relaxed text-muted-foreground">
                   <span className="mt-0.5 shrink-0 font-mono text-primary">▹</span>
                   <span>{b}</span>
                 </li>
@@ -78,7 +78,7 @@ function FeaturedCard({ project, wide }: { project: FeaturedProject; wide?: bool
           )}
           <div className="mt-5 flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
-              <span key={tech} className="rounded border border-primary/20 bg-primary/5 px-2.5 py-1 font-mono text-[11px] text-primary">
+              <span key={tech} className="rounded border border-primary/20 bg-primary/5 px-2.5 py-1 font-mono text-[0.8125rem] text-primary">
                 {tech}
               </span>
             ))}
@@ -89,7 +89,7 @@ function FeaturedCard({ project, wide }: { project: FeaturedProject; wide?: bool
           {project.metric ? (
             <div className={cn(wide && "md:text-right")}>
               <p className="font-display text-3xl font-bold text-gradient">{project.metric.value}</p>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{project.metric.label}</p>
+              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{project.metric.label}</p>
             </div>
           ) : (
             <span />
@@ -149,11 +149,11 @@ export function Projects() {
                   )}
                 </div>
                 <h4 className="font-display font-semibold text-foreground transition-colors group-hover:text-primary">{project.title}</h4>
-                <p className="mt-2 mb-3 flex-1 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
-                <p className="mb-3 font-mono text-[11px] text-muted-foreground/70">{project.context}</p>
+                <p className="mt-2 mb-3 flex-1 text-base leading-relaxed text-muted-foreground">{project.description}</p>
+                <p className="mb-3 font-mono text-[0.8125rem] text-muted-foreground/70">{project.context}</p>
                 <div className="flex flex-wrap gap-x-3 gap-y-1">
                   {project.technologies.map((tech) => (
-                    <span key={tech} className="font-mono text-[11px] text-primary/80">
+                    <span key={tech} className="font-mono text-[0.8125rem] text-primary/80">
                       #{tech}
                     </span>
                   ))}

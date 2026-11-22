@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { BootScreen } from '@/components/fx/boot-screen'
+import { Intro } from '@/components/fx/intro'
 import { NeuralBackground } from '@/components/fx/neural-background'
 import { ScrollProgress } from '@/components/fx/scroll-progress'
 import { CursorGlow } from '@/components/fx/cursor-glow'
@@ -38,7 +38,7 @@ export const viewport: Viewport = {
 }
 
 // The boot animation plays once per browser session; later page loads skip it.
-const bootScript = `try{var d=document.documentElement;if(sessionStorage.getItem('mt-booted')||matchMedia('(prefers-reduced-motion: reduce)').matches){d.dataset.booted='1'}else{sessionStorage.setItem('mt-booted','1')}}catch(e){}`
+const bootScript = `try{var d=document.documentElement;if(sessionStorage.getItem('mt-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches){d.dataset.booted='1'}else{sessionStorage.setItem('mt-intro','1')}}catch(e){}`
 
 export default function RootLayout({
   children,
@@ -53,7 +53,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased overflow-x-hidden`}
       >
-        <BootScreen />
+        <Intro />
         <NeuralBackground />
         <ScrollProgress />
         <CursorGlow />

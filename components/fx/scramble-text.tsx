@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { prefersReducedMotion } from "@/lib/motion"
 import { cn } from "@/lib/utils"
 
-const GLYPHS = "!<>-_\\/[]{}=+*^?#01アイウエオ$%&"
+const GLYPHS = "01<>/\\{}[]=+*#$%&"
 
 type Props = {
   text: string

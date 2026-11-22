@@ -100,6 +100,17 @@
     scroll-behavior: smooth;
     background: var(--background);
   }
+  /* Slightly larger base size on bigger screens so everything reads comfortably */
+  @media (min-width: 768px) {
+    html {
+      font-size: 106.25%; /* 17px */
+    }
+  }
+  @media (min-width: 1280px) {
+    html {
+      font-size: 112.5%; /* 18px */
+    }
+  }
   body {
     @apply bg-background text-foreground;
   }
@@ -154,17 +165,6 @@
     background-position: 0 64px, 64px 0;
   }
 }
-@keyframes boot-out {
-  0%,
-  85% {
-    opacity: 1;
-    visibility: visible;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
 @keyframes boot-line {
   from {
     opacity: 0;
@@ -173,14 +173,6 @@
   to {
     opacity: 1;
     transform: none;
-  }
-}
-@keyframes boot-bar {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
   }
 }
 @keyframes border-flow {
@@ -346,20 +338,37 @@
   filter: none;
 }
 
-/* ---------- Boot screen ---------- */
-.boot {
-  animation: boot-out 2.1s ease forwards;
-}
-.boot-line {
-  opacity: 0;
-  animation: boot-line 0.3s ease forwards;
-}
-.boot-bar {
-  transform-origin: left;
-  animation: boot-bar 1.6s cubic-bezier(0.6, 0, 0.2, 1) forwards;
-}
-html[data-booted] .boot {
+/* ---------- Intro ("launching" the site from a code window) ---------- */
+html[data-booted] .intro {
   display: none;
+}
+/* If JavaScript never runs, the intro still gets out of the way. */
+.intro-failsafe {
+  animation: intro-failsafe 0.5s ease 8s forwards;
+}
+@keyframes intro-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* Typed terminal command: set --n (characters), --dur and --delay inline */
+.type-line {
+  display: inline-block;
+  vertical-align: bottom;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: type var(--dur) steps(var(--n)) var(--delay) forwards;
+}
+@keyframes type {
+  to {
+    width: calc(var(--n) * 1ch);
+  }
+}
+.intro-out-line {
+  opacity: 0;
+  animation: boot-line 0.25s ease var(--delay) forwards;
 }
 
 /* ---------- Scrollbar & selection ---------- */
@@ -388,7 +397,7 @@ html[data-booted] .boot {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .boot {
+  .intro {
     display: none;
   }
   .reveal {

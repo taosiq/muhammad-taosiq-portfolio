@@ -28,7 +28,7 @@ export function Certifications() {
                   <div className="crt absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="scanline opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent opacity-70" />
-                  <span className="absolute left-3 top-3 rounded border border-primary/30 bg-background/80 px-2 py-0.5 font-mono text-[10px] text-primary backdrop-blur">
+                  <span className="absolute left-3 top-3 rounded border border-primary/30 bg-background/80 px-2 py-0.5 font-mono text-xs text-primary backdrop-blur">
                     CERT_{String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -42,7 +42,7 @@ export function Certifications() {
                   {cert.score && (
                     <div className="mt-3 rounded-md border border-primary/20 bg-primary/5 p-3">
                       <p className="font-mono text-sm font-medium text-primary">{cert.score}</p>
-                      <p className="mt-1 text-xs text-muted-foreground">{cert.details}</p>
+                      <p className="mt-1 text-sm text-muted-foreground">{cert.details}</p>
                     </div>
                   )}
 

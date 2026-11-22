@@ -49,7 +49,7 @@ export function Navigation() {
           <span className="animate-blink text-primary">_</span>
         </a>
 
-        <ul className="hidden items-center gap-1 font-mono text-[13px] md:flex">
+        <ul className="hidden items-center gap-1 font-mono text-sm md:flex">
           {navItems.map((item, i) => {
             const active = activeSection === item.href.slice(1)
             return (
@@ -75,7 +75,7 @@ export function Navigation() {
           })}
         </ul>
 
-        <div className="hidden items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 font-mono text-[11px] text-primary lg:flex">
+        <div className="hidden items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 font-mono text-[0.8125rem] text-primary lg:flex">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />

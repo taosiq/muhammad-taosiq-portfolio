@@ -57,7 +57,7 @@ export function About() {
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
                 <span className="ml-3 font-mono text-xs text-muted-foreground">profile.ts</span>
               </div>
-              <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-7">
+              <pre className="overflow-x-auto p-5 font-mono text-sm leading-7">
                 {code.map((line, i) => (
                   <div key={i} className="flex">
                     <span className="mr-5 w-5 shrink-0 select-none text-right text-muted-foreground/40">{i + 1}</span>
@@ -96,12 +96,12 @@ export function About() {
                   <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110">
                     <item.icon className="h-5 w-5 text-primary" />
                   </div>
-                  <span className="font-mono text-[10px] text-muted-foreground/60">0{index + 1}</span>
+                  <span className="font-mono text-xs text-muted-foreground/60">0{index + 1}</span>
                 </div>
-                <h3 className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{item.title}</h3>
+                <h3 className="font-mono text-[0.8125rem] uppercase tracking-widest text-muted-foreground">{item.title}</h3>
                 <p className="mt-1 font-display text-lg font-semibold text-foreground">{item.value}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{item.detail}</p>
-                {item.extra && <p className="text-xs text-muted-foreground">{item.extra}</p>}
+                <p className="mt-1 text-sm text-muted-foreground">{item.detail}</p>
+                {item.extra && <p className="text-sm text-muted-foreground">{item.extra}</p>}
               </HoloCard>
             </Reveal>
           ))}

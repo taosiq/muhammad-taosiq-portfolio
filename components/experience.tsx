@@ -93,7 +93,7 @@ export function Experience() {
 
                   <ul className="mb-5 space-y-3 text-muted-foreground">
                     {exp.description.map((item, i) => (
-                      <li key={i} className="flex gap-3 text-sm leading-relaxed">
+                      <li key={i} className="flex gap-3 text-base leading-relaxed">
                         <span className="mt-0.5 shrink-0 font-mono text-primary">▹</span>
                         <span>{item}</span>
                       </li>
@@ -102,7 +102,7 @@ export function Experience() {
 
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech) => (
-                      <span key={tech} className="rounded border border-primary/20 bg-primary/5 px-2.5 py-1 font-mono text-[11px] text-primary">
+                      <span key={tech} className="rounded border border-primary/20 bg-primary/5 px-2.5 py-1 font-mono text-[0.8125rem] text-primary">
                         {tech}
                       </span>
                     ))}

@@ -55,7 +55,7 @@ export function Skills() {
                 </div>
                 <div>
                   <h3 className="font-display font-semibold text-foreground">{category.title}</h3>
-                  <p className="font-mono text-[10px] text-muted-foreground">
+                  <p className="font-mono text-xs text-muted-foreground">
                     module.<span className="text-primary">{category.id}</span> · {category.skills.length} loaded
                   </p>
                 </div>
