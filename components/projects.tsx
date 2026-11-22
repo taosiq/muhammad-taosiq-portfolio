@@ -26,10 +26,11 @@ function ProjectLinks({ project }: { project: FeaturedProject }) {
           href={project.live}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${project.title} live site`}
-          className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-all hover:border-primary/60 hover:text-primary hover:shadow-[0_0_16px_-4px_var(--primary)]"
+          aria-label={`${project.title} live demo`}
+          className="flex h-9 items-center gap-1.5 rounded-md border border-primary/40 bg-primary/10 px-3 font-mono text-xs text-primary transition-all hover:border-primary hover:shadow-[0_0_16px_-4px_var(--primary)]"
         >
-          <ExternalLink className="h-4 w-4" />
+          Live Demo
+          <ExternalLink className="h-3.5 w-3.5" />
         </a>
       )}
     </div>
@@ -114,7 +115,7 @@ export function Projects() {
               <FeaturedCard project={first} wide />
             </Reveal>
           )}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {rest.map((project, index) => (
               <Reveal key={project.slug} delay={index * 120}>
                 <FeaturedCard project={project} />

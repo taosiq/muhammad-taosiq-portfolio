@@ -63,7 +63,7 @@ export const highlights: {
     title: "Currently",
     value: "MSc Industrial Engineering",
     detail: "Beykent University, Istanbul",
-    extra: "Open to internships & remote roles",
+    extra: "Sep 2026 - Present",
   },
   {
     icon: GraduationCap,
@@ -103,19 +103,6 @@ export const experiences = [
       "Assisted in database management and backend development tasks.",
     ],
     technologies: ["Android", "Java", "REST APIs", "Debugging", "Databases"],
-  },
-  {
-    period: "May 2025",
-    title: "Freelance Web Developer",
-    company: "Shams Rims (USA)",
-    companyUrl: null as string | null,
-    location: "Remote",
-    description: [
-      "Delivered a fully responsive business website as the sole Front-End Developer using React.js, Bootstrap, and custom CSS.",
-      "Implemented multi-page layout with React Router and a dynamic product catalog with interactive filtering.",
-      "Managed client communications across time zones and delivered milestones on schedule.",
-    ],
-    technologies: ["React.js", "Bootstrap", "CSS3", "JavaScript", "React Router"],
   },
   {
     period: "Dec 2023 - Feb 2024",
@@ -179,6 +166,28 @@ export const featuredProjects: FeaturedProject[] = [
     date: "November 2026",
     highlight: true,
     metric: { value: "100%", label: "eval pass rate" },
+  },
+  {
+    slug: "ai-trade-journal",
+    title: "AI Trade Journal",
+    description:
+      "AI-powered trading analytics and journaling platform for tracking trades, behavioral patterns, and strategy performance. Built CRUD functionality for trade logging with real-time market data, news aggregation, and interactive analytics dashboards. Integrated Groq LLM for AI-driven trade analysis and discipline scoring, providing actionable insights into trader behavior and risk management. Designed with secure authentication, server-side rendering, responsive UI, and data visualization for performance tracking.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Groq API",
+      "Recharts",
+      "REST APIs",
+    ],
+    github: "https://github.com/taosiq",
+    live: "https://ai-trade-journal-imsi7elnk-mtaosiqbscs21seecs-1571s-projects.vercel.app/",
+    context: "AI-Powered Full-Stack Web Application",
+    date: "April 2026",
+    highlight: false,
   },
   {
     slug: "skill-exchange",
