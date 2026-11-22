@@ -1,17 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-
-const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Contact", href: "#contact" },
-]
+import { navItems, profile } from "@/lib/content"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -19,92 +11,110 @@ export function Navigation() {
   const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-
-      // Find active section
-      const sections = navItems.map((item) => item.href.slice(1))
-      for (const section of sections.reverse()) {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= 150) {
-            setActiveSection(section)
-            break
-          }
-        }
+    const ids = navItems.map((item) => item.href.slice(1))
+    let ticking = false
+    const update = () => {
+      ticking = false
+      setIsScrolled(window.scrollY > 40)
+      let current = ""
+      for (const id of ids) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top <= 160) current = id
+      }
+      setActiveSection(current)
+    }
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
       }
     }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    update()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
-          : "bg-transparent"
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        isScrolled ? "border-b border-primary/10 bg-background/70 backdrop-blur-xl" : "bg-transparent",
       )}
     >
-      <nav className="max-w-6xl mx-auto px-6 md:px-12 lg:px-24 py-4 flex items-center justify-between">
-        <a
-          href="#home"
-          className="text-xl font-bold text-foreground hover:text-primary transition-colors"
-        >
-          MT<span className="text-primary">.</span>
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
+        <a href="#home" className="group flex items-center gap-2 font-mono text-lg font-bold" aria-label="Home">
+          <span className="text-primary">&lt;</span>
+          <span className="text-foreground transition-colors group-hover:text-primary">{profile.initials}</span>
+          <span className="text-primary">/&gt;</span>
+          <span className="animate-blink text-primary">_</span>
         </a>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className={cn(
-                  "px-4 py-2 text-sm rounded-lg transition-all duration-300",
-                  activeSection === item.href.slice(1)
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                )}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+        <ul className="hidden items-center gap-1 font-mono text-[13px] md:flex">
+          {navItems.map((item, i) => {
+            const active = activeSection === item.href.slice(1)
+            return (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  className={cn(
+                    "relative block px-3 py-2 transition-colors duration-300",
+                    active ? "text-primary" : "text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  <span className="mr-1 text-primary/60">0{i + 1}.</span>
+                  {item.label}
+                  <span
+                    className={cn(
+                      "absolute inset-x-3 -bottom-0.5 h-px origin-left bg-gradient-to-r from-primary to-accent transition-transform duration-500",
+                      active ? "scale-x-100" : "scale-x-0",
+                    )}
+                  />
+                </a>
+              </li>
+            )
+          })}
         </ul>
 
-        {/* Mobile Menu Button */}
+        <div className="hidden items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 font-mono text-[11px] text-primary lg:flex">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+          </span>
+          OPEN TO WORK
+        </div>
+
         <button
-          className="md:hidden text-foreground p-2 hover:bg-muted rounded-lg transition-colors"
+          className="rounded-lg border border-border p-2 text-foreground transition-colors hover:border-primary/50 hover:text-primary md:hidden"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
         >
-          {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       <div
         className={cn(
-          "md:hidden bg-background/95 backdrop-blur-lg border-b border-border overflow-hidden transition-all duration-300",
-          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          "overflow-hidden border-b border-primary/10 bg-background/95 backdrop-blur-xl transition-all duration-500 md:hidden",
+          isMobileMenuOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0 border-transparent",
         )}
       >
-        <ul className="flex flex-col px-6 py-4 gap-1">
-          {navItems.map((item) => (
-            <li key={item.href}>
+        <ul className="flex flex-col gap-1 px-6 py-4 font-mono">
+          {navItems.map((item, i) => (
+            <li
+              key={item.href}
+              className={cn("transition-all duration-500", isMobileMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-4 opacity-0")}
+              style={{ transitionDelay: isMobileMenuOpen ? `${i * 50}ms` : "0ms" }}
+            >
               <a
                 href={item.href}
                 className={cn(
-                  "block px-4 py-3 rounded-lg transition-all",
-                  activeSection === item.href.slice(1)
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  "block rounded-lg px-4 py-3 transition-colors",
+                  activeSection === item.href.slice(1) ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground",
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
+                <span className="mr-2 text-primary/60">0{i + 1}.</span>
                 {item.label}
               </a>
             </li>

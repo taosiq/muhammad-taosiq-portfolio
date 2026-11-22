@@ -1,130 +1,116 @@
 "use client"
 
-import { ExternalLink, Briefcase } from "lucide-react"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-
-const experiences = [
-  {
-    period: "May 2025",
-    title: "Freelance Web Developer",
-    company: "Shams Rims (USA)",
-    companyUrl: null,
-    location: "Remote",
-    description: [
-      "Delivered a fully responsive business website as the sole Front-End Developer using React.js, Bootstrap, and custom CSS.",
-      "Implemented multi-page layout with React Router and a dynamic product catalog with interactive filtering.",
-      "Managed client communications across time zones and delivered milestones on schedule.",
-    ],
-    technologies: ["React.js", "Bootstrap", "CSS3", "JavaScript", "React Router"],
-  },
-  {
-    period: "Dec 2023 - Feb 2024",
-    title: "Android Application Development Intern",
-    company: "Blue Brackets",
-    companyUrl: null,
-    location: "Kabul, Afghanistan",
-    description: [
-      "Developed Android applications using Java and Android Studio, gaining hands-on mobile development experience.",
-      "Worked in agile team environment, improving problem-solving and communication skills.",
-      "Participated in full software development lifecycle including design, testing, and deployment.",
-    ],
-    technologies: ["Java", "Android Studio", "Agile", "Git"],
-  },
-]
+import { useEffect, useRef } from "react"
+import { Briefcase, ExternalLink, MapPin } from "lucide-react"
+import { HoloCard } from "@/components/fx/holo-card"
+import { Reveal } from "@/components/fx/reveal"
+import { SectionHeading } from "@/components/fx/section-heading"
+import { experiences } from "@/lib/content"
 
 export function Experience() {
-  const { ref, isVisible } = useScrollAnimation()
+  const trackRef = useRef<HTMLDivElement>(null)
+  const fillRef = useRef<HTMLDivElement>(null)
+
+  // The timeline line "charges up" as you scroll through the section.
+  useEffect(() => {
+    let ticking = false
+    const update = () => {
+      ticking = false
+      const track = trackRef.current
+      const fill = fillRef.current
+      if (!track || !fill) return
+      const rect = track.getBoundingClientRect()
+      const start = window.innerHeight * 0.7
+      const progress = Math.min(1, Math.max(0, (start - rect.top) / rect.height))
+      fill.style.transform = `scaleY(${progress})`
+    }
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
+    }
+    update()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   return (
-    <section id="experience" className="py-12 px-6 md:px-12 lg:px-24 bg-card/30">
-      <div ref={ref} className="max-w-5xl mx-auto">
-        <div
-          className={`transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="text-sm font-medium text-primary uppercase tracking-wider mb-2">
-            Experience
-          </h2>
-          <p className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-balance">
-            Professional Journey
-          </p>
-        </div>
+    <section id="experience" className="relative px-6 py-24 md:px-10">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading index="02" label="Experience" title="Professional Journey" />
 
-        <div className="relative">
-          <div className="space-y-10">
-            {experiences.map((exp, index) => (
-              <div
-                key={index}
-                className={`group relative transition-all duration-700 ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-                  <div className="text-sm text-muted-foreground shrink-0 md:w-44 md:text-right">
-                    <p className="font-medium">{exp.period}</p>
-                  </div>
-                  <div className="relative flex-1">
-                    {/* Timeline dot */}
-                    <div className="absolute left-[-20px] top-1.5 w-3 h-3 bg-primary rounded-full hidden md:block" />
-                    {/* Timeline line */}
-                    <div className="absolute left-[-17px] top-5 bottom-[-40px] w-px bg-border hidden md:block" />
-                    <div className="p-6 bg-card rounded-xl border border-border hover:border-primary/50 transition-all group-hover:shadow-lg group-hover:shadow-primary/5">
-                    <div className="flex items-start gap-3 mb-4">
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                        <Briefcase className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-foreground flex items-center gap-2 flex-wrap">
-                          {exp.title}
-                        </h3>
-                        <p className="text-primary font-medium flex items-center gap-1">
-                          {exp.companyUrl ? (
-                            <a
-                              href={exp.companyUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="hover:underline inline-flex items-center gap-1"
-                            >
-                              {exp.company}
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
-                          ) : (
-                            exp.company
-                          )}
-                        </p>
-                        <p className="text-sm text-muted-foreground">{exp.location}</p>
-                      </div>
-                    </div>
-                    
-                    <ul className="space-y-3 text-muted-foreground mb-4">
-                      {exp.description.map((item, i) => (
-                        <li key={i} className="text-sm leading-relaxed flex gap-3">
-                          <span className="text-primary mt-0.5 shrink-0">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+        <div ref={trackRef} className="relative">
+          {/* Track + animated fill */}
+          <div className="absolute bottom-2 left-[7px] top-2 w-px bg-border md:left-[calc(12rem+7px)]" aria-hidden="true">
+            <div
+              ref={fillRef}
+              className="h-full w-full origin-top bg-gradient-to-b from-primary via-sky-400 to-accent shadow-[0_0_10px_var(--primary)]"
+              style={{ transform: "scaleY(0)" }}
+            />
           </div>
+
+          <ol className="space-y-12">
+            {experiences.map((exp, index) => (
+              <Reveal as="li" key={exp.title} delay={index * 150} className="relative grid grid-cols-1 gap-4 pl-10 md:grid-cols-[12rem_1fr] md:gap-12 md:pl-0">
+                {/* Node */}
+                <span
+                  className="absolute left-0 top-1.5 flex h-[15px] w-[15px] items-center justify-center md:left-[12rem]"
+                  aria-hidden="true"
+                >
+                  <span className="absolute h-full w-full animate-ping-slow rounded-full bg-primary/40" />
+                  <span className="h-[9px] w-[9px] rounded-full border-2 border-primary bg-background" />
+                </span>
+
+                <div className="font-mono text-sm md:pr-8 md:text-right">
+                  <p className="text-primary">{exp.period}</p>
+                  <p className="mt-1 inline-flex items-center gap-1 text-xs text-muted-foreground">
+                    <MapPin className="h-3 w-3" />
+                    {exp.location}
+                  </p>
+                </div>
+
+                <HoloCard className="p-6 md:ml-8" tilt>
+                  <div className="mb-5 flex items-start gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-primary/30 bg-primary/10">
+                      <Briefcase className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-xl font-semibold text-foreground">{exp.title}</h3>
+                      <p className="font-mono text-sm text-primary">
+                        @{" "}
+                        {exp.companyUrl ? (
+                          <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline">
+                            {exp.company}
+                            <ExternalLink className="h-3 w-3" />
+                          </a>
+                        ) : (
+                          exp.company
+                        )}
+                      </p>
+                    </div>
+                  </div>
+
+                  <ul className="mb-5 space-y-3 text-muted-foreground">
+                    {exp.description.map((item, i) => (
+                      <li key={i} className="flex gap-3 text-sm leading-relaxed">
+                        <span className="mt-0.5 shrink-0 font-mono text-primary">▹</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2">
+                    {exp.technologies.map((tech) => (
+                      <span key={tech} className="rounded border border-primary/20 bg-primary/5 px-2.5 py-1 font-mono text-[11px] text-primary">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </HoloCard>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

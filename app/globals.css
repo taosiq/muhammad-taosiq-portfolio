@@ -3,80 +3,47 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Futuristic dark theme: deep navy base, cyan primary, electric-blue accent */
 :root {
-  --background: oklch(0.12 0.015 250);
-  --foreground: oklch(0.96 0.01 250);
-  --card: oklch(0.15 0.015 250);
-  --card-foreground: oklch(0.96 0.01 250);
-  --popover: oklch(0.15 0.015 250);
-  --popover-foreground: oklch(0.96 0.01 250);
-  --primary: oklch(0.72 0.14 175);
-  --primary-foreground: oklch(0.12 0.015 250);
-  --secondary: oklch(0.20 0.015 250);
-  --secondary-foreground: oklch(0.88 0.01 250);
-  --muted: oklch(0.20 0.015 250);
-  --muted-foreground: oklch(0.62 0.02 250);
-  --accent: oklch(0.72 0.14 175);
-  --accent-foreground: oklch(0.12 0.015 250);
+  --background: oklch(0.11 0.02 258);
+  --foreground: oklch(0.96 0.01 240);
+  --card: oklch(0.145 0.022 258);
+  --card-foreground: oklch(0.96 0.01 240);
+  --popover: oklch(0.145 0.022 258);
+  --popover-foreground: oklch(0.96 0.01 240);
+  --primary: oklch(0.82 0.14 205);
+  --primary-foreground: oklch(0.11 0.02 258);
+  --secondary: oklch(0.19 0.025 258);
+  --secondary-foreground: oklch(0.88 0.01 240);
+  --muted: oklch(0.19 0.025 258);
+  --muted-foreground: oklch(0.68 0.03 250);
+  --accent: oklch(0.66 0.19 262);
+  --accent-foreground: oklch(0.98 0.01 240);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.25 0.015 250);
-  --input: oklch(0.20 0.015 250);
-  --ring: oklch(0.72 0.14 175);
-  --chart-1: oklch(0.72 0.14 175);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --destructive-foreground: oklch(0.98 0.01 240);
+  --border: oklch(0.27 0.03 255);
+  --input: oklch(0.19 0.025 258);
+  --ring: oklch(0.82 0.14 205);
+  --chart-1: oklch(0.82 0.14 205);
+  --chart-2: oklch(0.66 0.19 262);
+  --chart-3: oklch(0.72 0.15 165);
+  --chart-4: oklch(0.8 0.15 85);
+  --chart-5: oklch(0.6 0.2 295);
   --radius: 0.75rem;
-  --sidebar: oklch(0.15 0.015 250);
-  --sidebar-foreground: oklch(0.96 0.01 250);
-  --sidebar-primary: oklch(0.72 0.14 175);
-  --sidebar-primary-foreground: oklch(0.12 0.015 250);
-  --sidebar-accent: oklch(0.20 0.015 250);
-  --sidebar-accent-foreground: oklch(0.88 0.01 250);
-  --sidebar-border: oklch(0.25 0.015 250);
-  --sidebar-ring: oklch(0.72 0.14 175);
-}
-
-.dark {
-  --background: oklch(0.12 0.015 250);
-  --foreground: oklch(0.96 0.01 250);
-  --card: oklch(0.15 0.015 250);
-  --card-foreground: oklch(0.96 0.01 250);
-  --popover: oklch(0.15 0.015 250);
-  --popover-foreground: oklch(0.96 0.01 250);
-  --primary: oklch(0.72 0.14 175);
-  --primary-foreground: oklch(0.12 0.015 250);
-  --secondary: oklch(0.20 0.015 250);
-  --secondary-foreground: oklch(0.88 0.01 250);
-  --muted: oklch(0.20 0.015 250);
-  --muted-foreground: oklch(0.62 0.02 250);
-  --accent: oklch(0.72 0.14 175);
-  --accent-foreground: oklch(0.12 0.015 250);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.25 0.015 250);
-  --input: oklch(0.20 0.015 250);
-  --ring: oklch(0.72 0.14 175);
-  --chart-1: oklch(0.72 0.14 175);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.15 0.015 250);
-  --sidebar-foreground: oklch(0.96 0.01 250);
-  --sidebar-primary: oklch(0.72 0.14 175);
-  --sidebar-primary-foreground: oklch(0.12 0.015 250);
-  --sidebar-accent: oklch(0.20 0.015 250);
-  --sidebar-accent-foreground: oklch(0.88 0.01 250);
-  --sidebar-border: oklch(0.25 0.015 250);
-  --sidebar-ring: oklch(0.72 0.14 175);
+  --sidebar: oklch(0.145 0.022 258);
+  --sidebar-foreground: oklch(0.96 0.01 240);
+  --sidebar-primary: oklch(0.82 0.14 205);
+  --sidebar-primary-foreground: oklch(0.11 0.02 258);
+  --sidebar-accent: oklch(0.19 0.025 258);
+  --sidebar-accent-foreground: oklch(0.88 0.01 240);
+  --sidebar-border: oklch(0.27 0.03 255);
+  --sidebar-ring: oklch(0.82 0.14 205);
 }
 
 @theme inline {
   --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
-  --font-mono: var(--font-mono), 'Geist Mono', monospace;
+  --font-display: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -113,40 +80,320 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-spin-slower: spin 32s linear infinite;
+  --animate-spin-reverse: spin-reverse 24s linear infinite;
+  --animate-blink: blink 1s steps(1) infinite;
+  --animate-scan: scan 3.2s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 40s linear infinite;
+  --animate-ping-slow: ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+    background: var(--background);
+  }
   body {
     @apply bg-background text-foreground;
   }
-  html {
-    scroll-behavior: smooth;
+  section[id] {
+    scroll-margin-top: 5rem;
   }
 }
 
-/* Custom scrollbar */
+/* ---------- Keyframes ---------- */
+@keyframes spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes scan {
+  0% {
+    transform: translateY(-110%);
+  }
+  100% {
+    transform: translateY(110%);
+  }
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes grid-pan {
+  to {
+    background-position: 0 64px, 64px 0;
+  }
+}
+@keyframes boot-out {
+  0%,
+  85% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes boot-line {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes boot-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes border-flow {
+  to {
+    --flow-angle: 360deg;
+  }
+}
+
+@property --flow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ---------- Utilities ---------- */
+
+/* Animated perspective grid behind everything */
+.cyber-grid {
+  background-image:
+    linear-gradient(to bottom, oklch(0.82 0.14 205 / 0.07) 1px, transparent 1px),
+    linear-gradient(to right, oklch(0.82 0.14 205 / 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
+  animation: grid-pan 8s linear infinite;
+}
+
+.text-gradient {
+  /* background-image (not the shorthand) so the optimizer's color fallback can't reset background-clip */
+  background-image: linear-gradient(100deg, var(--primary) 0%, oklch(0.75 0.17 235) 45%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-text {
+  text-shadow: 0 0 24px oklch(0.82 0.14 205 / 0.45);
+}
+
+/* Glass card with a spotlight that follows the cursor (--mx / --my set in JS) */
+.holo-card {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(180deg, oklch(0.16 0.025 258 / 0.85), oklch(0.13 0.022 258 / 0.85));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(8px);
+  transition:
+    border-color 0.4s,
+    box-shadow 0.4s,
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.holo-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    oklch(0.82 0.14 205 / 0.12),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.holo-card:hover {
+  border-color: oklch(0.82 0.14 205 / 0.45);
+  box-shadow:
+    0 0 0 1px oklch(0.82 0.14 205 / 0.08),
+    0 20px 50px -20px oklch(0.82 0.14 205 / 0.35);
+}
+.holo-card:hover::before {
+  opacity: 1;
+}
+
+/* Rotating conic border, used on the featured project */
+.flow-border {
+  position: relative;
+}
+.flow-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--flow-angle),
+    transparent 0deg,
+    var(--primary) 60deg,
+    var(--accent) 120deg,
+    transparent 180deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-flow 5s linear infinite;
+  pointer-events: none;
+}
+
+/* HUD corner brackets: drop <span class="hud-corners" /> inside a relative box */
+.hud-corners {
+  --c: oklch(0.82 0.14 205 / 0.7);
+  --s: 12px;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(var(--c), var(--c)) top left / var(--s) 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) top left / 1px var(--s) no-repeat,
+    linear-gradient(var(--c), var(--c)) top right / var(--s) 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) top right / 1px var(--s) no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom left / var(--s) 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom left / 1px var(--s) no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom right / var(--s) 1px no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom right / 1px var(--s) no-repeat;
+  opacity: 0.5;
+  transition: opacity 0.4s;
+}
+.group:hover .hud-corners {
+  opacity: 1;
+}
+
+/* Horizontal scan line that sweeps a box */
+.scanline {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.scanline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, oklch(0.82 0.14 205 / 0.22), transparent);
+  animation: scan 3.2s ease-in-out infinite;
+}
+
+/* CRT-style lines over images */
+.crt {
+  background: repeating-linear-gradient(to bottom, transparent 0 2px, oklch(0 0 0 / 0.18) 2px 3px);
+  pointer-events: none;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---------- Boot screen ---------- */
+.boot {
+  animation: boot-out 2.1s ease forwards;
+}
+.boot-line {
+  opacity: 0;
+  animation: boot-line 0.3s ease forwards;
+}
+.boot-bar {
+  transform-origin: left;
+  animation: boot-bar 1.6s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+html[data-booted] .boot {
+  display: none;
+}
+
+/* ---------- Scrollbar & selection ---------- */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: linear-gradient(var(--primary), var(--accent));
   border-radius: 4px;
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
+::selection {
+  background: oklch(0.82 0.14 205 / 0.3);
+  color: var(--foreground);
 }
 
-/* Selection styling */
-::selection {
-  background: oklch(0.72 0.14 175 / 0.3);
-  color: var(--foreground);
+/* ---------- Reduced motion: keep it calm ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .boot {
+    display: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
 }

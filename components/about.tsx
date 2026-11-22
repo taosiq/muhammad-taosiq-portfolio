@@ -1,108 +1,109 @@
 "use client"
 
-import { Award, GraduationCap, Languages, Target } from "lucide-react"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { HoloCard } from "@/components/fx/holo-card"
+import { Reveal } from "@/components/fx/reveal"
+import { SectionHeading } from "@/components/fx/section-heading"
+import { highlights } from "@/lib/content"
 
-const highlights = [
-  {
-    icon: GraduationCap,
-    title: "Education",
-    value: "BS Computer Science",
-    detail: "NUST, Pakistan",
-    extra: "Oct 2021 - June 2025",
-  },
-  {
-    icon: Award,
-    title: "Scholarship",
-    value: "Fully Funded",
-    detail: "Allama Iqbal Scholarship",
-    extra: "Merit-Based Award",
-  },
-  {
-    icon: Languages,
-    title: "IELTS Academic",
-    value: "Band 6.5",
-    detail: "Speaking: 7.0 | CEFR: B2",
-    extra: "Dari (Native), Urdu, English",
-  },
-  {
-    icon: Target,
-    title: "Objective",
-    value: "Masters Abroad",
-    detail: "Open to Remote Opportunities",
-    extra: "",
-  },
+// Syntax-highlighted "source file" describing the profile.
+const code: { k?: string; v?: string; c?: string; raw?: string }[] = [
+  { raw: "const taosiq = {" },
+  { k: "current", v: '"MSc Industrial Engineering"', c: "// Beykent University" },
+  { k: "location", v: '"Istanbul, Türkiye"' },
+  { k: "degree", v: '"BS Computer Science"', c: "// NUST, Pakistan" },
+  { k: "scholarship", v: '"Allama Iqbal (Fully Funded)"' },
+  { k: "focus", v: '["AI/DL", "Full-Stack", "Mobile"]' },
+  { k: "languages", v: '["Dari", "Urdu", "English"]' },
+  { k: "lookingFor", v: '["Internship", "Full-time", "Remote"]' },
+  { k: "openToRemote", v: "true" },
+  { raw: "}" },
 ]
 
 export function About() {
-  const { ref, isVisible } = useScrollAnimation()
-
   return (
-    <section id="about" className="py-12 px-6 md:px-12 lg:px-24">
-      <div ref={ref} className="max-w-5xl mx-auto">
-        <div
-          className={`transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="text-sm font-medium text-primary uppercase tracking-wider mb-2">
-            About
-          </h2>
-          <p className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-balance">
-            Passionate about building impactful technology
-          </p>
-        </div>
-        
-        <div
-          className={`space-y-5 text-muted-foreground leading-relaxed transition-all duration-700 delay-100 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <p className="text-lg text-pretty">
-            I am a Computer Science graduate from the{" "}
-            <span className="text-foreground font-medium">
-              National University of Sciences and Technology (NUST)
-            </span>
-            , Pakistan. I was honored to receive a{" "}
-            <span className="text-primary font-medium">
-              Fully Funded Allama Iqbal Scholarship
-            </span>{" "}
-            for my undergraduate studies, recognizing academic excellence.
-          </p>
-          
-          <p className="text-pretty">
-            My expertise spans{" "}
-            <span className="text-foreground">Deep Learning & Computer Vision</span>,{" "}
-            <span className="text-foreground">Full-Stack Web Development</span>, and{" "}
-            <span className="text-foreground">Mobile App Development</span>. I have a strong 
-            interest in workflow automation, API integration, and emerging AI technologies.
-          </p>
+    <section id="about" className="relative px-6 py-24 md:px-10">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading index="01" label="About" title="Passionate about building impactful technology" />
 
-          <p className="text-pretty">
-            Currently seeking{" "}
-            <span className="text-primary font-medium">Master&apos;s program opportunities abroad</span>{" "}
-            (Erasmus+, fully funded programs), along with internships, remote positions, 
-            or international collaborations where I can contribute and grow.
-          </p>
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.1fr_1fr]">
+          <Reveal className="space-y-5 text-lg leading-relaxed text-muted-foreground">
+            <p className="text-pretty">
+              I am a Computer Science graduate from the{" "}
+              <span className="font-medium text-foreground">National University of Sciences and Technology (NUST)</span>,
+              Pakistan. I was honored to receive a{" "}
+              <span className="font-medium text-primary">Fully Funded Allama Iqbal Scholarship</span> for my
+              undergraduate studies, recognizing academic excellence.
+            </p>
+            <p className="text-pretty">
+              My expertise spans <span className="text-foreground">Deep Learning &amp; Computer Vision</span>,{" "}
+              <span className="text-foreground">Full-Stack Web Development</span>, and{" "}
+              <span className="text-foreground">Mobile App Development</span>. I have a strong interest in workflow
+              automation, API integration, and emerging AI technologies.
+            </p>
+            <p className="text-pretty">
+              Currently a Master&apos;s student in{" "}
+              <span className="font-medium text-primary">MSc Industrial Engineering</span> at{" "}
+              <span className="font-medium text-foreground">Beykent University, Istanbul</span>, and seeking
+              opportunities such as internships, full-time or remote roles in the{" "}
+              <span className="text-foreground">software development</span> sector.
+            </p>
+          </Reveal>
+
+          <Reveal delay={150}>
+            <HoloCard className="overflow-hidden" tilt>
+              <div className="flex items-center gap-2 border-b border-border px-4 py-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
+                <span className="ml-3 font-mono text-xs text-muted-foreground">profile.ts</span>
+              </div>
+              <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-7">
+                {code.map((line, i) => (
+                  <div key={i} className="flex">
+                    <span className="mr-5 w-5 shrink-0 select-none text-right text-muted-foreground/40">{i + 1}</span>
+                    {line.raw ? (
+                      <span>
+                        {line.raw.startsWith("const") ? (
+                          <>
+                            <span className="text-accent">const</span> <span className="text-foreground">taosiq</span>{" "}
+                            <span className="text-muted-foreground">= {"{"}</span>
+                          </>
+                        ) : (
+                          <span className="text-muted-foreground">{line.raw}</span>
+                        )}
+                      </span>
+                    ) : (
+                      <span className="pl-4">
+                        <span className="text-sky-300">{line.k}</span>
+                        <span className="text-muted-foreground">: </span>
+                        <span className={line.v === "true" ? "text-accent" : "text-primary"}>{line.v}</span>
+                        <span className="text-muted-foreground">,</span>
+                        {line.c && <span className="ml-3 text-muted-foreground/50">{line.c}</span>}
+                      </span>
+                    )}
+                  </div>
+                ))}
+              </pre>
+            </HoloCard>
+          </Reveal>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
+        <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4">
           {highlights.map((item, index) => (
-            <div
-              key={index}
-              className={`p-5 bg-card rounded-xl border border-border hover:border-primary/50 transition-all duration-500 group hover:shadow-lg hover:shadow-primary/5 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${200 + index * 100}ms` }}
-            >
-              <item.icon className="w-7 h-7 text-primary mb-3 group-hover:scale-110 transition-transform" />
-              <h3 className="font-semibold text-foreground text-sm mb-1">{item.title}</h3>
-              <p className="text-sm text-primary font-medium">{item.value}</p>
-              <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
-              <p className="text-xs text-muted-foreground">{item.extra}</p>
-            </div>
+            <Reveal key={item.title} delay={index * 100}>
+              <HoloCard className="h-full p-5" tilt>
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110">
+                    <item.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <span className="font-mono text-[10px] text-muted-foreground/60">0{index + 1}</span>
+                </div>
+                <h3 className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">{item.title}</h3>
+                <p className="mt-1 font-display text-lg font-semibold text-foreground">{item.value}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{item.detail}</p>
+                {item.extra && <p className="text-xs text-muted-foreground">{item.extra}</p>}
+              </HoloCard>
+            </Reveal>
           ))}
         </div>
       </div>

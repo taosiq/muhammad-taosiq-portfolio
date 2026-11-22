@@ -1,96 +1,85 @@
 "use client"
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { Code, Globe, Brain, Database, Wrench } from "lucide-react"
+import { HoloCard } from "@/components/fx/holo-card"
+import { Reveal } from "@/components/fx/reveal"
+import { SectionHeading } from "@/components/fx/section-heading"
+import { skillCategories } from "@/lib/content"
+import { cn } from "@/lib/utils"
 
-const skillCategories = [
-  {
-    icon: Code,
-    title: "Programming Languages",
-    skills: ["Java", "Python", "C++", "SQL", "JavaScript", "HTML/CSS"],
-  },
-  {
-    icon: Globe,
-    title: "Web & Mobile",
-    skills: ["React Native", "React.js", "Node.js", "Android Studio", "Expo", "Bootstrap"],
-  },
-  {
-    icon: Brain,
-    title: "AI & Machine Learning",
-    skills: [
-      "TensorFlow",
-      "Keras",
-      "PyTorch",
-      "OpenCV",
-      "YOLOv8",
-      "Deep Learning",
-      "Computer Vision",
-    ],
-  },
-  {
-    icon: Database,
-    title: "Databases & Cloud",
-    skills: ["MySQL", "Firebase", "REST APIs"],
-  },
-  {
-    icon: Wrench,
-    title: "Tools & Collaboration",
-    skills: ["Git", "GitHub", "VS Code", "PyCharm", "Trello", "Slack", "n8n"],
-  },
-]
+const allSkills = skillCategories.flatMap((c) => c.skills)
+
+function Ticker({ items, reverse }: { items: string[]; reverse?: boolean }) {
+  // Content is duplicated so the loop is seamless.
+  const loop = [...items, ...items]
+  return (
+    <div className="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+      <ul className={cn("flex shrink-0 gap-3 pr-3", reverse ? "animate-marquee-reverse" : "animate-marquee")} aria-hidden="true">
+        {loop.map((skill, i) => (
+          <li
+            key={`${skill}-${i}`}
+            className="whitespace-nowrap rounded-md border border-border bg-card/60 px-4 py-2 font-mono text-sm text-muted-foreground"
+          >
+            <span className="mr-2 text-primary">◆</span>
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export function Skills() {
-  const { ref, isVisible } = useScrollAnimation()
+  const half = Math.ceil(allSkills.length / 2)
 
   return (
-    <section id="skills" className="py-12 px-6 md:px-12 lg:px-24 bg-card/30">
-      <div ref={ref} className="max-w-5xl mx-auto">
-        <div
-          className={`transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="text-sm font-medium text-primary uppercase tracking-wider mb-2">
-            Skills
-          </h2>
-          <p className="text-2xl md:text-3xl font-bold text-foreground mb-8 text-balance">
-            Technical Expertise
-          </p>
+    <section id="skills" className="relative py-24">
+      <div className="px-6 md:px-10">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading index="04" label="Skills" title="Technical Expertise" />
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className={`p-6 bg-card rounded-xl border border-border hover:border-primary/50 transition-all duration-500 group hover:shadow-lg hover:shadow-primary/5 ${
-                isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <category.icon className="w-5 h-5 text-primary" />
+      <Reveal className="mb-14 space-y-3">
+        <Ticker items={allSkills.slice(0, half)} />
+        <Ticker items={allSkills.slice(half)} reverse />
+      </Reveal>
+
+      <div className="px-6 md:px-10">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {skillCategories.map((category, index) => (
+          <Reveal key={category.id} delay={index * 100}>
+            <HoloCard className="h-full p-6" tilt>
+              <div className="mb-5 flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 transition-transform duration-500 group-hover:scale-110">
+                  <category.icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="text-foreground font-semibold">{category.title}</h3>
+                <div>
+                  <h3 className="font-display font-semibold text-foreground">{category.title}</h3>
+                  <p className="font-mono text-[10px] text-muted-foreground">
+                    module.<span className="text-primary">{category.id}</span> · {category.skills.length} loaded
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <span
+
+              <ul className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <li
                     key={skill}
-                    className={`px-3 py-1.5 text-sm bg-secondary text-secondary-foreground rounded-md border border-border hover:border-primary/50 hover:text-primary transition-all cursor-default ${
-                      isVisible ? "opacity-100" : "opacity-0"
-                    }`}
-                    style={{ transitionDelay: `${index * 100 + skillIndex * 30}ms` }}
+                    className="cursor-default rounded-md border border-border bg-secondary/60 px-3 py-1.5 text-sm text-secondary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:text-primary hover:shadow-[0_0_14px_-4px_var(--primary)]"
                   >
                     {skill}
-                  </span>
+                  </li>
                 ))}
+              </ul>
+
+              {/* Decorative "load" bar */}
+              <div className="mt-6 h-px w-full overflow-hidden bg-border">
+                <div className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-primary to-accent transition-transform duration-1000 ease-out group-hover:scale-x-100" />
               </div>
-            </div>
-          ))}
-        </div>
+            </HoloCard>
+          </Reveal>
+        ))}
+      </div>
       </div>
     </section>
   )

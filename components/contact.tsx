@@ -1,120 +1,107 @@
 "use client"
 
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { Button } from "@/components/ui/button"
-
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "taosiqmuhammad@gmail.com",
-    href: "mailto:taosiqmuhammad@gmail.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+93 700 495 5576",
-    href: "tel:+937004955576",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Kabul, Afghanistan",
-    href: null,
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "linkedin.com/in/mtaosiq",
-    href: "https://www.linkedin.com/in/mtaosiq",
-  },
-  {
-    icon: Github,
-    label: "GitHub",
-    value: "github.com/taosiq",
-    href: "https://github.com/taosiq",
-  },
-]
+import { useState } from "react"
+import { Check, Copy, Send } from "lucide-react"
+import { HoloCard } from "@/components/fx/holo-card"
+import { Reveal } from "@/components/fx/reveal"
+import { SectionHeading } from "@/components/fx/section-heading"
+import { contactInfo, profile } from "@/lib/content"
 
 export function Contact() {
-  const { ref, isVisible } = useScrollAnimation()
+  const [copied, setCopied] = useState(false)
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      window.location.href = `mailto:${profile.email}`
+    }
+  }
 
   return (
-    <section id="contact" className="py-12 px-6 md:px-12 lg:px-24">
-      <div ref={ref} className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <div
-              className={`transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
-              <h2 className="text-sm font-medium text-primary uppercase tracking-wider mb-2">
-                Contact
-              </h2>
-              <p className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-balance">
-                Let&apos;s Connect
-              </p>
-            </div>
+    <section id="contact" className="relative px-6 py-24 md:px-10">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading index="06" label="Contact" title="Let's Connect" />
 
-            <p
-              className={`text-muted-foreground text-lg leading-relaxed mb-8 text-pretty transition-all duration-700 delay-100 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+          <Reveal>
+            <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
               I&apos;m actively seeking{" "}
-              <span className="text-foreground font-medium">Master&apos;s program opportunities</span>,{" "}
-              remote positions, internships, or international collaborations. Whether you have 
-              a question, want to discuss a project, or explore opportunities - feel free to reach out!
+              <span className="font-medium text-foreground">internships, full-time or remote roles</span> in software
+              development. Whether you have a question, want to discuss a project, or explore opportunities - feel free
+              to reach out!
             </p>
 
-            <div
-              className={`transition-all duration-700 delay-200 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
-              <Button asChild size="lg" className="group">
-                <a href="mailto:taosiqmuhammad@gmail.com">
-                  <Send className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                  Say Hello
-                </a>
-              </Button>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            {contactInfo.map((item, index) => (
-              <div
-                key={index}
-                className={`flex items-center gap-4 p-4 bg-card rounded-xl border border-border hover:border-primary/50 transition-all duration-500 group ${
-                  isVisible
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-8"
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href={`mailto:${profile.email}`}
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-primary px-7 py-3.5 font-mono text-sm font-semibold text-primary-foreground shadow-[0_0_30px_-5px_var(--primary)] transition-shadow hover:shadow-[0_0_45px_-2px_var(--primary)]"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                  <item.icon className="w-5 h-5 text-primary" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-sm text-muted-foreground">{item.label}</p>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      target={item.href.startsWith("http") ? "_blank" : undefined}
-                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="text-foreground hover:text-primary transition-colors font-medium truncate block"
-                    >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <p className="text-foreground font-medium truncate">{item.value}</p>
-                  )}
-                </div>
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+                <Send className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-1" />
+                Say Hello
+              </a>
+              <button
+                type="button"
+                onClick={copyEmail}
+                className="inline-flex items-center gap-2 rounded-lg border border-primary/40 px-5 py-3.5 font-mono text-sm text-primary transition-all hover:border-primary hover:bg-primary/10"
+              >
+                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                {copied ? "Copied!" : "Copy email"}
+              </button>
+            </div>
+          </Reveal>
+
+          <Reveal delay={150}>
+            <HoloCard className="overflow-hidden">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
+                <span className="ml-3 font-mono text-xs text-muted-foreground">visitor@taosiq: ~</span>
               </div>
-            ))}
-          </div>
+              <div className="p-5 font-mono text-sm">
+                <p className="text-muted-foreground">
+                  <span className="text-emerald-400">visitor@taosiq</span>:<span className="text-accent">~</span>$ contact --list
+                </p>
+                <ul className="mt-4 space-y-1">
+                  {contactInfo.map((item) => {
+                    const external = item.href?.startsWith("http")
+                    const body = (
+                      <>
+                        <item.icon className="h-4 w-4 shrink-0 text-primary" />
+                        <span className="w-20 shrink-0 text-muted-foreground">{item.label.toLowerCase()}</span>
+                        <span className="text-muted-foreground/50">→</span>
+                        <span className="truncate text-foreground transition-colors group-hover/row:text-primary">{item.value}</span>
+                      </>
+                    )
+                    return (
+                      <li key={item.label}>
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            target={external ? "_blank" : undefined}
+                            rel={external ? "noopener noreferrer" : undefined}
+                            className="group/row flex items-center gap-3 rounded-md px-2 py-2.5 transition-colors hover:bg-primary/5"
+                          >
+                            {body}
+                          </a>
+                        ) : (
+                          <div className="flex items-center gap-3 px-2 py-2.5">{body}</div>
+                        )}
+                      </li>
+                    )
+                  })}
+                </ul>
+                <p className="mt-4 text-muted-foreground">
+                  <span className="text-emerald-400">visitor@taosiq</span>:<span className="text-accent">~</span>${" "}
+                  <span className="animate-blink text-primary">▌</span>
+                </p>
+              </div>
+            </HoloCard>
+          </Reveal>
         </div>
       </div>
     </section>
