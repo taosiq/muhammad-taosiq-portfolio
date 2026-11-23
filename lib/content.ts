@@ -183,7 +183,7 @@ export const featuredProjects: FeaturedProject[] = [
       "Recharts",
       "REST APIs",
     ],
-    github: "https://github.com/taosiq",
+    github: "https://github.com/taosiq/trade-journal",
     live: "https://ai-trade-journal-omega.vercel.app/",
     context: "AI-Powered Full-Stack Web Application",
     date: "April 2026",
@@ -195,7 +195,7 @@ export const featuredProjects: FeaturedProject[] = [
     description:
       "A mobile application enabling peer-to-peer skill exchange via a unique time-based credit system. Features secure authentication, interactive dashboard, CRUD operations with REST API integration, responsive UI, and admin panel with role-based access control.",
     technologies: ["React Native", "Node.js", "Firebase", "REST APIs", "Expo"],
-    github: "https://github.com/taosiq",
+    github: "https://github.com/taosiq/p2pskillx",
     live: null,
     context: "Final Year Project, NUST",
     date: "May 2025",
@@ -208,7 +208,7 @@ export const featuredProjects: FeaturedProject[] = [
     description:
       "Medical image classification system implementing Transfer Learning with ResNet50 achieving 97.81% validation accuracy and weighted F1-score of 0.99 for MRI brain tumor detection. Engineered preprocessing with OpenCV for tumor isolation.",
     technologies: ["Python", "TensorFlow", "Keras", "ResNet50", "OpenCV"],
-    github: "https://github.com/taosiq",
+    github: "https://github.com/taosiq/Brain-Tumor-Detection-Project",
     live: null,
     context: "Deep Learning Project, NUST",
     date: "December 2023",
@@ -221,7 +221,7 @@ export const featuredProjects: FeaturedProject[] = [
     description:
       "Real-time computer vision system for American Sign Language recognition. Developed a proprietary ASL dataset using Roboflow and trained YOLOv8s for real-time hand sign recognition with RTX 2060 GPU acceleration.",
     technologies: ["Python", "PyTorch", "YOLOv8", "Roboflow", "Ultralytics"],
-    github: "https://github.com/taosiq",
+    github: "https://github.com/taosiq/American-Sign-Language",
     live: null,
     context: "Computer Vision Project, NUST",
     date: "February 2023",
@@ -236,7 +236,7 @@ export const otherProjects = [
     description:
       "Fully responsive business website with modern UI/UX, multi-page navigation, dynamic product catalog with category-based filtering.",
     technologies: ["React.js", "Bootstrap", "CSS3", "React Router"],
-    github: null as string | null,
+    github: "https://github.com/taosiq/Shams-Rims" as string | null,
     context: "Freelance Project (USA)",
   },
   {
@@ -244,7 +244,7 @@ export const otherProjects = [
     description:
       "Data structures implementation using Binary Search Trees, Linked Lists, and Hash Tables for efficient content retrieval.",
     technologies: ["C++", "Data Structures", "Algorithms"],
-    github: "https://github.com/taosiq" as string | null,
+    github: null as string | null,
     context: "NUST",
   },
   {
@@ -252,7 +252,7 @@ export const otherProjects = [
     description:
       "Full school management with secure CRUD operations, authentication, role-based access, and Tkinter GUI.",
     technologies: ["Python", "MySQL", "Tkinter"],
-    github: "https://github.com/taosiq" as string | null,
+    github: null as string | null,
     context: "NUST",
   },
 ]
