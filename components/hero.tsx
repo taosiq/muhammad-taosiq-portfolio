@@ -31,17 +31,17 @@ export function Hero() {
   })
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20 md:px-10">
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-[1.15fr_1fr]">
+    <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-6 pt-24 pb-12 md:px-10 lg:pt-20 lg:pb-8">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-10">
         {/* Text */}
         <div className="order-2 lg:order-1">
           <div {...enter(0)}>
-            <p className="mb-6 inline-flex items-center gap-2 rounded-md border border-primary/20 bg-primary/5 px-3 py-1.5 font-mono text-xs text-primary">
+            <p className="mb-4 inline-flex items-center gap-2 rounded-md border border-primary/20 bg-primary/5 px-3 py-1.5 font-mono text-xs text-primary">
               <span className="text-muted-foreground">~/portfolio $</span> ./hello_world.sh
             </p>
           </div>
 
-          <h1 className={cn("font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl xl:text-8xl", enter(1).className)} style={enter(1).style}>
+          <h1 className={cn("font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl lg:text-[clamp(3rem,min(9.5vh,4.6vw),5.25rem)]", enter(1).className)} style={enter(1).style}>
             {isLoaded ? (
               <ScrambleText text={profile.name} trigger="mount" duration={1100} className="text-gradient" />
             ) : (
@@ -49,32 +49,32 @@ export function Hero() {
             )}
           </h1>
 
-          <p className={cn("mt-6 font-mono text-lg text-foreground md:text-2xl", enter(2).className)} style={enter(2).style}>
+          <p className={cn("mt-4 font-mono text-lg text-foreground md:text-2xl", enter(2).className)} style={enter(2).style}>
             <span className="text-primary">&gt;</span>{" "}
             {isLoaded ? <Typewriter words={profile.roles} startDelay={1400} /> : <span>{profile.roles[0]}</span>}
           </p>
-          <p className={cn("mt-2 text-base text-muted-foreground", enter(2).className)} style={enter(2).style}>
+          <p className={cn("mt-1.5 text-base text-muted-foreground", enter(2).className)} style={enter(2).style}>
             {profile.title}
           </p>
 
-          <p className={cn("mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground text-pretty", enter(3).className)} style={enter(3).style}>
+          <p className={cn("mt-5 max-w-2xl text-lg leading-relaxed xl:text-xl text-muted-foreground text-pretty", enter(3).className)} style={enter(3).style}>
             I build accessible, pixel-perfect digital experiences for the web. Specializing in{" "}
             <span className="font-medium text-foreground">AI &amp; Deep Learning</span>,{" "}
             <span className="font-medium text-foreground">Full-Stack Development</span>, and{" "}
             <span className="font-medium text-foreground">Mobile Applications</span>.
           </p>
 
-          <p className={cn("mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty", enter(4).className)} style={enter(4).style}>
+          <p className={cn("mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground xl:text-lg text-pretty", enter(4).className)} style={enter(4).style}>
             Graduate from <span className="text-foreground">NUST, Pakistan</span>, now an{" "}
             <span className="font-medium text-primary">MSc Industrial Engineering</span> student at{" "}
             <span className="text-foreground">Beykent University, Istanbul</span>. Seeking internships, full-time or
             remote roles in software development.
           </p>
 
-          <div className={cn("mt-10 flex flex-wrap gap-4", enter(5).className)} style={enter(5).style}>
+          <div className={cn("mt-7 flex flex-wrap items-center gap-3", enter(5).className)} style={enter(5).style}>
             <a
               href="#projects"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-primary px-7 py-3.5 font-mono text-base font-semibold text-primary-foreground shadow-[0_0_30px_-5px_var(--primary)] transition-shadow hover:shadow-[0_0_45px_-2px_var(--primary)]"
+              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-primary px-6 py-3 font-mono text-base font-semibold text-primary-foreground shadow-[0_0_30px_-5px_var(--primary)] transition-shadow hover:shadow-[0_0_45px_-2px_var(--primary)]"
             >
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               View Projects
@@ -82,20 +82,20 @@ export function Hero() {
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-lg border border-primary/40 px-7 py-3.5 font-mono text-base text-primary transition-all hover:bg-primary/10 hover:border-primary"
+              className="inline-flex items-center gap-2 rounded-lg border border-primary/40 px-6 py-3 font-mono text-base text-primary transition-all hover:bg-primary/10 hover:border-primary"
             >
               Contact Me
             </a>
             <a
               href="#certifications"
-              className="inline-flex items-center gap-2 rounded-lg px-4 py-3.5 font-mono text-base text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-2 rounded-lg px-3 py-3 font-mono text-base text-muted-foreground transition-colors hover:text-foreground"
             >
               <Award className="h-4 w-4" />
               Certifications
             </a>
           </div>
 
-          <div className={cn("mt-10 flex items-center gap-3", enter(6).className)} style={enter(6).style}>
+          <div className={cn("mt-6 flex items-center gap-3", enter(6).className)} style={enter(6).style}>
             {[
               { icon: Github, href: profile.github, label: "GitHub" },
               { icon: Linkedin, href: profile.linkedin, label: "LinkedIn" },
@@ -115,11 +115,11 @@ export function Hero() {
             <span className="ml-2 hidden h-px w-24 bg-gradient-to-r from-border to-transparent sm:block" />
           </div>
 
-          <dl className={cn("mt-12 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-4", enter(7).className)} style={enter(7).style}>
+          <dl className={cn("mt-7 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-4", enter(7).className)} style={enter(7).style}>
             {stats.map((s) => (
-              <div key={s.label} className="bg-background/80 px-5 py-5 backdrop-blur">
-                <dt className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{s.label}</dt>
-                <dd className="mt-1 font-display text-3xl font-bold text-foreground">{s.value}</dd>
+              <div key={s.label} className="bg-background/80 px-5 py-3.5 backdrop-blur">
+                <dt className="whitespace-nowrap font-mono text-xs uppercase tracking-wider text-muted-foreground">{s.label}</dt>
+                <dd className="mt-0.5 font-display text-2xl xl:text-3xl font-bold text-foreground">{s.value}</dd>
               </div>
             ))}
           </dl>
@@ -132,7 +132,7 @@ export function Hero() {
             isLoaded ? "scale-100 opacity-100" : "scale-90 opacity-0",
           )}
         >
-          <div className="relative aspect-square w-64 md:w-80 lg:w-[26rem]">
+          <div className="relative aspect-square w-64 md:w-80 lg:w-[min(26rem,68vh)]">
             <div className="absolute inset-[10%] rounded-full bg-primary/20 blur-3xl" />
 
             <svg className="absolute inset-0 animate-spin-slow" viewBox="0 0 100 100" aria-hidden="true">

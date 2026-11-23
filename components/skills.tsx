@@ -32,7 +32,7 @@ export function Skills() {
   const half = Math.ceil(allSkills.length / 2)
 
   return (
-    <section id="skills" className="relative py-24">
+    <section id="skills" className="relative py-14 md:py-16">
       <div className="px-6 md:px-10">
         <div className="mx-auto max-w-7xl">
           <SectionHeading index="04" label="Skills" title="Technical Expertise" />

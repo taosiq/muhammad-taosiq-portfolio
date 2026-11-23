@@ -106,7 +106,8 @@
       font-size: 106.25%; /* 17px */
     }
   }
-  @media (min-width: 1280px) {
+  /* Only go to 18px when the screen is also tall; short laptop screens stay at 17px */
+  @media (min-width: 1280px) and (min-height: 860px) {
     html {
       font-size: 112.5%; /* 18px */
     }
@@ -115,7 +116,7 @@
     @apply bg-background text-foreground;
   }
   section[id] {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 3.5rem;
   }
 }
 

@@ -21,7 +21,7 @@ const code: { k?: string; v?: string; c?: string; raw?: string }[] = [
 
 export function About() {
   return (
-    <section id="about" className="relative px-6 py-24 md:px-10">
+    <section id="about" className="relative px-6 py-14 md:px-10 md:py-16">
       <div className="mx-auto max-w-7xl">
         <SectionHeading index="01" label="About" title="Passionate about building impactful technology" />
 

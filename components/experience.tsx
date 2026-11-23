@@ -36,7 +36,7 @@ export function Experience() {
   }, [])
 
   return (
-    <section id="experience" className="relative px-6 py-24 md:px-10">
+    <section id="experience" className="relative px-6 py-14 md:px-10 md:py-16">
       <div className="mx-auto max-w-7xl">
         <SectionHeading index="02" label="Experience" title="Professional Journey" />
 
