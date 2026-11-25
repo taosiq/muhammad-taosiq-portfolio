@@ -138,6 +138,36 @@ export type FeaturedProject = {
 // The first project is shown as the large card at the top.
 export const featuredProjects: FeaturedProject[] = [
   {
+    slug: "rafta",
+    title: "Rafta: AI Inventory Optimization for SMEs",
+    description:
+      "Built a full-stack inventory planning platform that imports sales and stock CSVs, classifies every SKU (ABC/XYZ), forecasts demand and sets safety stock, reorder points and order quantities. It also answers my MSc research question: does an ABC-based policy beat a uniform policy on cost and stock-outs?",
+    bullets: [
+      "Backtested 6 forecasting models per SKU (Holt-Winters, Croston for intermittent demand, a global LightGBM model and more) with rolling-origin validation; the selected models are more than 25% more accurate than the seasonal-naive benchmark (MASE).",
+      "Built a vectorised simulation engine (bootstrap replications, common random numbers, paired t-tests and a cost-vs-service frontier): the ABC policy cut total cost by 2.3% and stock-out days by 14% vs a uniform 95% policy (p < 0.001).",
+      "Added an LLM assistant that answers questions like \"Which products will run out next week?\" through whitelisted, read-only tool calls (no generated SQL), plus nightly forecast jobs, 84 automated tests and GitHub Actions CI. Deployed on Vercel, Render and Neon.",
+    ],
+    technologies: [
+      "Python",
+      "FastAPI",
+      "pandas",
+      "statsmodels",
+      "LightGBM",
+      "PostgreSQL",
+      "Next.js",
+      "TypeScript",
+      "LLM Tool-Calling",
+      "Docker",
+      "GitHub Actions",
+    ],
+    github: "https://github.com/taosiq/rafta",
+    live: "https://rafta-five.vercel.app",
+    context: "Supply Chain AI, MSc Research Project",
+    date: "November 2026",
+    highlight: true,
+    metric: { value: "−14%", label: "stock-out days" },
+  },
+  {
     slug: "rehber",
     title: "Rehber: Multilingual AI Support Agent SaaS",
     description:
@@ -164,7 +194,7 @@ export const featuredProjects: FeaturedProject[] = [
     live: null,
     context: "AI SaaS Platform, Personal Project",
     date: "November 2026",
-    highlight: true,
+    highlight: false,
     metric: { value: "100%", label: "eval pass rate" },
   },
   {

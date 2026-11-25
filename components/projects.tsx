@@ -116,11 +116,15 @@ export function Projects() {
             </Reveal>
           )}
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {rest.map((project, index) => (
-              <Reveal key={project.slug} delay={index * 120}>
-                <FeaturedCard project={project} />
-              </Reveal>
-            ))}
+            {rest.map((project, index) => {
+              // With an odd number of cards, the last one spans both columns so the grid has no gap.
+              const spansRow = rest.length % 2 === 1 && index === rest.length - 1
+              return (
+                <Reveal key={project.slug} delay={index * 120} className={cn(spansRow && "md:col-span-2")}>
+                  <FeaturedCard project={project} wide={spansRow} />
+                </Reveal>
+              )
+            })}
           </div>
         </div>
 
